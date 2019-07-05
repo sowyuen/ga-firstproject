@@ -1,0 +1,51 @@
+h1{
+	text-align: center;
+}
+p{
+	color: white;
+}
+span{
+	color: green;
+}
+h4{
+	text-align: center;
+}
+#title{
+	background-color: darkgrey;
+}
+.row{
+	background-color: grey;
+}
+#word-input{
+	width:55%;
+	display: block;
+	padding: 10px;
+	text-align: center;
+	margin: 20px auto;
+}
+#circular{
+		display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    background: #11151c;
+    box-shadow: 1px 12px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    box-sizing: border-box;
+    margin: 30px auto;
+}
+#timeLeft, #score{
+	text-align: center;
+}
+#instructions{
+	text-align: center;
+	padding:20px;
+	border: 5px groove white;
+}
+#current-word{
+	opacity: 0;
+	transition: 2s;
+	font-size: 45px;
+}
