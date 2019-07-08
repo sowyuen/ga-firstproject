@@ -7,6 +7,9 @@ body{
 input{
 	background-color:orange;
 }
+input::placeholder {
+  color: white;
+}
 h1{
 	width: 53%;
   height: 59px;
@@ -234,4 +237,9 @@ button
   animation-delay: 2s;
   animation-iteration-count: infinite;
   font-weight: bold;
+}
+#easy,
+#medium,
+#hard {
+  margin: 0 5px;
 }
