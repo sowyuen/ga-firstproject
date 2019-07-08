@@ -1,27 +1,178 @@
+body{
+	background-image: url("https://previews.123rf.com/images/kannaa123rf/kannaa123rf1602/kannaa123rf160200232/52613731-random-letters-seamless-pattern-abstract-background-with-alphabet-creative-wallpaper-design-in-offic.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin: 0;
+}
+input{
+	background-color:orange;
+}
 h1{
-	text-align: center;
+	width: 53%;
+  height: 59px;
+  position: relative;
+  margin: 7% 38%;
+  background-color: white;
 }
+h1:after{
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  line-height: 48px;
+  animation: abomination1 6s infinite;
+  animation-fill-mode: forwards;
+  font-family: 'Barriecito', cursive;
+  font-size: 60px;
+}
+h1#title {
+    width: 28vw;
+    margin-bottom: 40px;
+    text-align: left;
+}
+  @keyframes abomination1 {
+  0% {
+    content: "b";
+  }
+  4% {
+    content: "B";
+  }
+  8% {
+    content: "Be";
+  }
+  12% {
+    content: "Bes ";
+  }
+  16% {
+    content: "Be";
+  }
+  20% {
+    content: "Bea";
+  }
+  24% {
+    content: "Beat";
+  }
+  28% {
+    content: "Beat t";
+  }
+  32% {
+    content: "Beat tg";
+  }
+  36% {
+    content: "Beat th";
+  }
+  40% {
+    content: "Beat the";
+  }
+  44% {
+    content: "Beat the t";
+  }
+  48% {
+    content: "Beat the to";
+  }
+  52% {
+    content: "Beat the t";
+  }
+  56% {
+    content: "Beat the ti";
+  }
+  60% {
+    content: "Beat the tim";
+  }
+  64% {
+    content: "Beat the timr";
+  }
+  68% {
+    content: "Beat the tim";
+  }
+  72% {
+    content: "Beat the time";
+  }
+  76% {
+    content: "Beat the time!";
+  }
+  80% {
+    content: "Beat the time!1";
+  }
+  84% {
+    content: "Beat the time!";
+  }
+  86% {
+  	content: "Beat the time!!";
+  }
+ }
+  #overlay-contents{
+  	display:flex;
+  	text-align: center;
+  	justify-content: center;
+  	font-size: 12px;
+  	align-items: center;
+  	height: 1000%;
+  	width:100%;
+  	flex-direction: column;
+  	background-image: url("notepad.jpg");
+	  background-size: 500px;
+	  background-repeat: no-repeat;
+	  background-position: center;
+	  background-color:transparent;
+  }
+
 p{
-	color: white;
-}
-span{
-	color: green;
+	color: black
+
 }
 h4{
 	text-align: center;
+	background-color: white;
 }
-#title{
-	background-color: darkgrey;
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: flex; /* Hidden by default */
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white; /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+	background-image: url("https://previews.123rf.com/images/kannaa123rf/kannaa123rf1602/kannaa123rf160200232/52613731-random-letters-seamless-pattern-abstract-background-with-alphabet-creative-wallpaper-design-in-offic.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+
 }
-.row{
-	background-color: grey;
+button
+{
+	height:70px;
+	justify-content: center;
+	margin: 0 auto;
+}
+#buttons{
+	display:flex;
 }
 #word-input{
-	width:55%;
-	display: block;
-	padding: 10px;
-	text-align: center;
-	margin: 20px auto;
+		display: block;
+		padding: 10px;
+		margin: 20px auto;
+    width: 90%;
+    border-radius: 25px;
+    outline: none;
+    box-shadow: 2px 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 12px 12px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: 16pt;
+    transition: background-color 0.2s linear;
+    letter-spacing: 0.7px;
+    opacity: 1;
+    border: none;
+    animation: fade 0.6s ease-in-out 1.2s forwards;
+    cursor: pointer;
 }
 #circular{
 		display:flex;
@@ -38,14 +189,49 @@ h4{
 }
 #timeLeft, #score{
 	text-align: center;
+	color: black;
+	margin: 0 auto;
+	background-image: url("notepad.jpg");
+	height:350px;
+  background-size: 300px;
+  background-repeat: no-repeat;
+  padding: 80px 0 100px;
+  background-position: center;
+	}
+#secondsLeft{
+	font-size: 100px;
+	font-weight: bold;
+	color: black;
+	font-family: 'Barriecito', cursive;
+}
+#scoreGained{
+	font-size: 80px;
+	font-weight: bold;
+	color:black;
+	font-family: 'Barriecito', cursive;
+}
+#counter, #scoreHeading{
+	color:black;
+	font-size: 30px;
 }
 #instructions{
 	text-align: center;
 	padding:20px;
 	border: 5px groove white;
+	background-color: white;
+	font-size:20px;
+	font-weight: bold;
 }
 #current-word{
-	opacity: 0;
-	transition: 2s;
+	opacity: 1;
+	transition: 0.5s;
 	font-size: 45px;
+	color:white;
+}
+#gameResults{
+	color: #ef5757;
+	animation-duration: 3s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  font-weight: bold;
 }
