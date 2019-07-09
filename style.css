@@ -14,8 +14,9 @@ h1{
 	width: 53%;
   height: 59px;
   position: relative;
-  margin: 7% 38%;
+  margin: -0.01% 38%;
   background-color: white;
+
 }
 h1:after{
   position: absolute;
@@ -121,7 +122,9 @@ h1#title {
   }
 
 p{
-	color: black
+	color: black;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
 
 }
 h4{
@@ -146,7 +149,6 @@ h4{
 	background-image: url("https://previews.123rf.com/images/kannaa123rf/kannaa123rf1602/kannaa123rf160200232/52613731-random-letters-seamless-pattern-abstract-background-with-alphabet-creative-wallpaper-design-in-offic.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
-
 }
 button
 {
@@ -190,30 +192,31 @@ button
     box-sizing: border-box;
     margin: 30px auto;
 }
-#timeLeft, #score{
+#timeLeft, #score, #highScore{
 	text-align: center;
 	color: black;
-	margin: 0 auto;
+	margin: -60px auto;
 	background-image: url("notepad.jpg");
-	height:350px;
-  background-size: 300px;
+  height: 355px;
+  background-size: 247px;
   background-repeat: no-repeat;
   padding: 80px 0 100px;
   background-position: center;
 	}
+
 #secondsLeft{
 	font-size: 100px;
 	font-weight: bold;
 	color: black;
 	font-family: 'Barriecito', cursive;
 }
-#scoreGained{
-	font-size: 80px;
+#scoreGained, #highScoreGained{
+	font-size: 85px;
 	font-weight: bold;
 	color:black;
 	font-family: 'Barriecito', cursive;
 }
-#counter, #scoreHeading{
+#counter, #scoreHeading, #highScoreHeading{
 	color:black;
 	font-size: 30px;
 }
@@ -242,4 +245,33 @@ button
 #medium,
 #hard {
   margin: 0 5px;
+}
+
+#myModal .modal-content{
+	font-size: 16px;
+	background-image: url("notepad.jpg");
+	height: 355px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 80px 0 100px;
+  background-position: center;
+}
+
+.modal-body{
+  width: 16vw;
+  height: 12vh;
+  /* padding: 1rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-self: center;
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+#chooseLevelButton, #tryAgainButton{
+  margin: 8px;
+  width: 117px;
+  height: 27px;
+  font-family: 'Gloria Hallelujah', cursive;
 }

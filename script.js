@@ -2,8 +2,12 @@
 let time;
 let timeLevel;
 let score = 0;
+let highScoreEasy =0;
+let highScoreMedium =0;
+let highScoreHard =0;
 let previousSelectedIndex;
 let timerInterval;
+let currentLevel;
 
 //grab DOM elements
 const wordInput = document.querySelector("#word-input");
@@ -11,6 +15,7 @@ const scoreDisplay = document.querySelector("#scoreGained");
 const timeDisplay = document.querySelector("#secondsLeft");
 const messageDisplay = document.querySelector("#gameResults");
 const circular = document.querySelector("#circular");
+const highScoreDisplay = document.querySelector("#highScoreGained");
 var currentWordDisplay = null;
 
 //setting animations
@@ -140,8 +145,8 @@ function checkWord(){
         wordInput.value = "";
         //whole word correct
         messageDisplay.innerHTML= "CORRECT!";
-        scoreDisplay.innerHTML= score;
         score++;
+        scoreDisplay.innerHTML= score;
         time=timeLevel+1;
     }
 
@@ -150,23 +155,15 @@ function checkWord(){
         const inputLength = wordInput.value.length;
         wordInput.style.backgroundColor = 'green';
         messageDisplay.innerHTML = "CORRECT";
-        console.log(inputLength);
-        console.log('arrayWord', currentWordDisplay.textContent);
-        console.log('typedWord', wordInput.value);
+        // console.log(inputLength);
+        // console.log('arrayWord', currentWordDisplay.textContent);
+        // console.log('typedWord', wordInput.value);
 
-//taking the first letter and up to the length of the word
-    if(currentWordDisplay.innerHTML.slice(0,inputLength)!== wordInput.value){
-        wordInput.style.backgroundColor = "red";
-        messageDisplay.textContent = "WRONG!";
-    }
-}
-
-    // if score is -1, display 0
-    if(score === -1){
-        scoreDisplay.innerHTML = 0;
-    }
-    else{
-    scoreDisplay.innerHTML = score;
+        //taking the first letter and up to the length of the word
+        if(currentWordDisplay.innerHTML.slice(0,inputLength)!== wordInput.value){
+            wordInput.style.backgroundColor = "red";
+            messageDisplay.textContent = "WRONG!";
+        }
     }
 }
 
@@ -183,9 +180,10 @@ function timer(){
     else if(time===0){
         //game is over!
         messageDisplay.innerHTML = "GAME OVER!!!!";
-        score=-1;
         clearInterval(timerInterval);
+        //show pop
         $('#myModal').modal('show');
+        highScoreRecord();
 
 
     }
@@ -195,17 +193,20 @@ function tryAgain(event){
     var popupId = event.target.getAttribute('id');
     if(popupId === "chooseLevelButton"){
         currentWordDisplay.innerHTML = "";
+        wordInput.value = "";
         gameResults.innerHTML="LETS' GO!";
         score =0;
         scoreDisplay.innerHTML = score;
+        wordInput.style.backgroundColor = 'orange';
         document.getElementById("overlay").style.display = "flex";
     }
     else if (popupId === "tryAgainButton"){
         currentWordDisplay.innerHTML="";
+        wordInput.value = "";
         gameResults.innerHTML="LETS' GO!";
         score =0;
         scoreDisplay.innerHTML = score;
-        wordInput.focus();
+        wordInput.style.backgroundColor = 'orange';
         startGame();
     }
 }
@@ -214,12 +215,15 @@ function chooseLevel(event){
     //checking if Id is easy
     if(buttonId === "easy"){
         timeLevel=5;
+        currentLevel ="easy";
     }
     else if(buttonId === "medium"){
         timeLevel = 3;
+        currentLevel ="medium";
     }
     else if (buttonId === "hard"){
         timeLevel = 2;
+        currentLevel ="hard";
     }
     //to remove away the overlay
     document.getElementById("overlay").style.display = "none";
@@ -235,6 +239,16 @@ function startGame(){
     //call timer
     time=timeLevel +1;
     timerInterval = setInterval(timer,1000);
+
+    if(currentLevel==="easy"){
+        highScoreDisplay.innerHTML= highScoreEasy;
+    }
+    else if (currentLevel==="medium"){
+        highScoreDisplay.innerHTML=highScoreMedium;
+    }
+    else if(currentLevel==="hard"){
+        highScoreDisplay.innerHTML=highScoreHard;
+    }
 }
 
 //initialize the game
@@ -246,6 +260,26 @@ function init(){
     hardButton.addEventListener("click",chooseLevel);
     tryAgainButt.addEventListener("click",tryAgain);
     chooseLevelButt.addEventListener("click",tryAgain);
+}
+
+function highScoreRecord(){
+    // console.log(`Score: ${score}`);
+    // console.log(`HScore: ${highScore}`);
+    if(currentLevel==="easy"){
+        if(score > highScoreEasy){
+            // console.log("bla");
+            highScoreEasy = score;
+            highScoreDisplay.innerHTML= highScoreEasy;
+        }
+    }
+    else if (currentLevel==="medium"){
+        highScoreMedium = score;
+        highScoreDisplay.innerHTML=highScoreMedium;
+    }
+    else if(currentLevel==="hard"){
+        highScoreHard = score;
+        highScoreDisplay.innerHTML=highScoreHard;
+    }
 }
 
 window.onload = function() {

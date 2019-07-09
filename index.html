@@ -2,12 +2,11 @@
 <html>
 <head>
     <title>Speed Challenge</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="animate.min.css">
-
-
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <div id="overlay">
@@ -55,6 +54,9 @@
                     <p id="scoreHeading">Score:</p>
                     <p id="scoreGained"> 0</p>
                 </div>
+                <div id="highScore">
+                <p id="highScoreHeading">High Score:</p>
+                <p id="highScoreGained">0</p>
             </div>
         </div>
 
@@ -66,16 +68,10 @@
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">BEAT THE TIME!</h4>
-      </div>
+    <div class="modal-content ">
       <div class="modal-body">
-        YOU LOST!! GAME OVER!!
-Would you like to choose a different level or try this level again?
-      </div>
-      <div class="modal-footer">
+        <p>YOU LOST!!GAME OVER!!</p>
+        <p>Would you like to choose a different level or try this level again?</p>
         <button type="button" id="chooseLevelButton" data-dismiss="modal">Choose Level</button>
         <button type="button" id="tryAgainButton" data-dismiss="modal">Try Again</button>
       </div>
