@@ -3,6 +3,7 @@ let time;
 let timeLevel;
 let score = 0;
 let previousSelectedIndex;
+let timerInterval;
 
 //grab DOM elements
 const wordInput = document.querySelector("#word-input");
@@ -22,6 +23,11 @@ gameMessage.classList.add('animated', 'tada');
 const easyButton = document.querySelector("#easy");
 const mediumButton = document.querySelector("#medium");
 const hardButton = document.querySelector("#hard");
+
+//popup page
+const tryAgainButt = document.querySelector("#tryAgainButton");
+const chooseLevelButt = document.querySelector("#chooseLevelButton");
+
 
 //arrays of words
 var wordsArray = [
@@ -148,7 +154,7 @@ function checkWord(){
         console.log('arrayWord', currentWordDisplay.textContent);
         console.log('typedWord', wordInput.value);
 
-//taking the first letter and up to the length
+//taking the first letter and up to the length of the word
     if(currentWordDisplay.innerHTML.slice(0,inputLength)!== wordInput.value){
         wordInput.style.backgroundColor = "red";
         messageDisplay.textContent = "WRONG!";
@@ -178,9 +184,31 @@ function timer(){
         //game is over!
         messageDisplay.innerHTML = "GAME OVER!!!!";
         score=-1;
+        clearInterval(timerInterval);
+        $('#myModal').modal('show');
+
+
     }
 }
 
+function tryAgain(event){
+    var popupId = event.target.getAttribute('id');
+    if(popupId === "chooseLevelButton"){
+        currentWordDisplay.innerHTML = "";
+        gameResults.innerHTML="LETS' GO!";
+        score =0;
+        scoreDisplay.innerHTML = score;
+        document.getElementById("overlay").style.display = "flex";
+    }
+    else if (popupId === "tryAgainButton"){
+        currentWordDisplay.innerHTML="";
+        gameResults.innerHTML="LETS' GO!";
+        score =0;
+        scoreDisplay.innerHTML = score;
+        wordInput.focus();
+        startGame();
+    }
+}
 function chooseLevel(event){
     var buttonId = event.target.getAttribute('id'); //getting the Id
     //checking if Id is easy
@@ -189,11 +217,11 @@ function chooseLevel(event){
     }
     else if(buttonId === "medium"){
         timeLevel = 3;
-        console.log(mediumButton);
     }
     else if (buttonId === "hard"){
         timeLevel = 2;
     }
+    //to remove away the overlay
     document.getElementById("overlay").style.display = "none";
     startGame();
 }
@@ -201,12 +229,12 @@ function chooseLevel(event){
 function startGame(){
     // load random words from array
     showWord(wordsArray);
-    //match word input
+    //match word input don't have to press enter
     wordInput.addEventListener('keyup',checkWord);
     wordInput.focus();
     //call timer
     time=timeLevel +1;
-    setInterval(timer,1000);
+    timerInterval = setInterval(timer,1000);
 }
 
 //initialize the game
@@ -216,6 +244,8 @@ function init(){
     easyButton.addEventListener("click",chooseLevel);
     mediumButton.addEventListener("click",chooseLevel);
     hardButton.addEventListener("click",chooseLevel);
+    tryAgainButt.addEventListener("click",tryAgain);
+    chooseLevelButt.addEventListener("click",tryAgain);
 }
 
 window.onload = function() {
